@@ -53,7 +53,7 @@
   "sourceMap": "66:352:2:-;;;90:33;;;-1:-1:-1;;;;;;90:33:2;113:10;90:33;;;66:352;5:2:-1;;;;30:1;27;20:12;5:2;66:352:2;;;;;;;",
   "deployedSourceMap": "66:352:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;66:352:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;127:36;;;:::i;:::-;;;;;;;;;;;;;;;;90:33;;;:::i;:::-;;;;-1:-1:-1;;;;;90:33:2;;;;;;;;;;;;;;313:103;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;313:103:2;;:::i;:::-;;127:36;;;;:::o;90:33::-;;;-1:-1:-1;;;;;90:33:2;;:::o;313:103::-;225:5;;-1:-1:-1;;;;;225:5:2;211:10;:19;196:101;;;;-1:-1:-1;;;196:101:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;375:24;:36;313:103::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\ncontract Migrations {\n  address public owner = msg.sender;\n  uint public last_completed_migration;\n\n  modifier restricted() {\n    require(\n      msg.sender == owner,\n      \"This function is restricted to the contract's owner\"\n    );\n    _;\n  }\n\n  function setCompleted(uint completed) public restricted {\n    last_completed_migration = completed;\n  }\n}\n",
-  "sourcePath": "C:\\Users\\Vivek hotti\\desktop\\advanced-evoting\\contracts\\Migrations.sol",
+  "sourcePath": "/Users/evelinemolnar/Desktop/GitHub/BlockchainApp/EVotingDApp/contracts/Migrations.sol",
   "ast": {
     "absolutePath": "project:/contracts/Migrations.sol",
     "exportedSymbols": {
@@ -911,9 +911,17 @@
     "name": "solc",
     "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
-  "networks": {},
-  "schemaVersion": "3.4.3",
-  "updatedAt": "2021-10-02T11:19:35.899Z",
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x02764910CcD7Df1fb1B52eC9acaa27a35200cf1F",
+      "transactionHash": "0xeb07ead39b168957bacd085e7d47130fef1967d7a45cf4cdc1aa05ce080f9525"
+    }
+  },
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-05-11T20:59:36.581Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },
