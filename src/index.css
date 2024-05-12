@@ -138,3 +138,28 @@ body {
 .btn {
   background-color: #0d3b66;
 }
+
+.add-candidate-icon {
+  cursor: pointer;
+  margin-left: 15px;
+  vertical-align: middle;
+}
+
+#additionalCandidates .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+#additionalCandidates .col-md-6 {
+  position: relative;
+  width: 50%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-md-custom {
+  flex: 0 0 36.83%;
+  /*max-width: 36.83%;*/
+}

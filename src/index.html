@@ -1,121 +1,123 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
+<head>
     <title>Election</title>
-  </head>
+</head>
 
-  <link
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+<link
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        rel="stylesheet"
+/>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sedan+SC&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
-    rel="stylesheet"
-  />
-  <link href="/index.css" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sedan+SC&display=swap"
+        rel="stylesheet"
+/>
+<link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet"
+/>
+<link href="/index.css" rel="stylesheet"/>
 
-  <body>
-    <div class="top-part">
-      <div id="welcomeMessage">Welcome to E-Voting!</div>
-      <!-- This component will be used to create a new election -->
+<body>
+<div class="top-part">
+    <div id="welcomeMessage">Welcome to E-Voting!</div>
+    <!-- This component will be used to create a new election -->
 
-      <div onclick="toggleNewElectionForm()" id="newElectionButton">
-        <img src="https://img.icons8.com/color/48/000000/plus-math.png" /><br />
+    <div onclick="toggleNewElectionForm()" id="newElectionButton">
+        <img src="https://img.icons8.com/color/48/000000/plus-math.png"/><br/>
         <span id="newElectionText"><b>New Election</b></span>
-      </div>
+    </div>
 
-      <!-- This component contains form to create election -->
-      <div id="newElectionForm" class="card">
+    <!-- This component contains form to create election -->
+    <div id="newElectionForm" class="card">
         <!-- Cross image to hide form -->
         <span>
           <img
-            onclick="toggleNewElectionForm()"
-            src="https://img.icons8.com/emoji/48/000000/cross-mark-emoji.png"
+                  onclick="toggleNewElectionForm()"
+                  src="https://img.icons8.com/emoji/48/000000/cross-mark-emoji.png"
           />
         </span>
 
         <!-- This form will take details of new election and submit a transaction to the network -->
         <form id="formData" onsubmit="submitNewElection(); return false;">
-          <font size="2"><b>Election title</b></font
-          ><br />
-          <input
-            name="details[]"
-            placeholder="Name your election"
-            required
-          /><br /><br />
+            <font size="2"><b>Election title</b></font
+            ><br/>
+            <input
+                    name="details[]"
+                    placeholder="Name your election"
+                    required
+            /><br/><br/>
 
-          <font size="2"><b>Election description</b></font
-          ><br />
-          <input
-            name="details[]"
-            placeholder="Describe something about this election"
-            required
-            style="width: 80%"
-          /><br /><br />
+            <font size="2"><b>Election description</b></font
+            ><br/>
+            <input
+                    name="details[]"
+                    placeholder="Describe something about this election"
+                    required
+                    style="width: 80%"
+            /><br/><br/>
 
-          <div>
+            <div>
             <span>
-              <font size="2"><b>1st Candidate name</b></font
-              ><br />
+              <font size="2"><b>Candidate 1 name</b></font
+              ><br/>
               <input
-                name="candidates[]"
-                placeholder="Candidate name"
-                required
+                      name="candidates[]"
+                      placeholder="Candidate name"
+                      required
               />
             </span>
-
             <span>
-              <font size="2"><b>2nd Candidate name</b></font
-              ><br />
+              <font size="2"><b>Candidate 2 name</b></font
+              ><br/>
               <input
-                name="candidates[]"
-                placeholder="Candidate name"
-                required
+                      name="candidates[]"
+                      placeholder="Candidate name"
+                      required
               />
+              <img src="https://img.icons8.com/color/48/000000/plus-math.png" id="addCandidate"
+                         class="add-candidate-icon"/>
             </span>
-          </div>
+                <div id="additionalCandidates"></div>
+            </div>
 
-          <br /><br />
+            <br/><br/>
 
-          <input type="submit" class="btn btn-primary" />
+            <input type="submit" class="btn btn-primary"/>
         </form>
-      </div>
+    </div>
+</div>
+
+<!-- List of elections on the network will appear here -->
+<div id="electionContainer" class="card">
+    <!-- Account address will be rendered here -->
+    <div>
+        <font size="2"><b>Your account address:</b></font
+        ><br/>
+        <div id="account"></div>
     </div>
 
-    <!-- List of elections on the network will appear here -->
-    <div id="electionContainer" class="card">
-      <!-- Account address will be rendered here -->
-      <div>
-        <font size="2"><b>Your account address:</b></font
-        ><br />
-        <div id="account"></div>
-      </div>
-
-      <!-- Loading will appear until blockchain data is loaded -->
-      <center id="loader">
+    <!-- Loading will appear until blockchain data is loaded -->
+    <center id="loader">
         <span class="spinner-border text-primary"></span>
-      </center>
+    </center>
 
-      <!-- Button to synchronize the list of elections on the network -->
-      <span>
+    <!-- Button to synchronize the list of elections on the network -->
+    <span>
         <img
-          onclick="ElectionData.get()"
-          src="https://img.icons8.com/color/50/000000/synchronize.png"
+                onclick="ElectionData.get()"
+                src="https://img.icons8.com/color/50/000000/synchronize.png"
         />
       </span>
 
-      <br /><br />
+    <br/><br/>
 
-      <!-- Election data will appear here -->
-      <div id="elections" class="container">
+    <!-- Election data will appear here -->
+    <div id="elections" class="container">
         <!-- <table class="table table-bordered">
           <tr>
             <td><b> </b></td>
@@ -126,25 +128,62 @@
 
           <tbody id="electionDetails"></tbody>
         </table> -->
-      </div>
     </div>
-  </body>
+</div>
+</body>
 
-  <!--jQuery CDN-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--jQuery CDN-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-  <!--web3 module for interacting with blockchain-->
-  <script
-    language="javascript"
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.js"
-  ></script>
+<!--web3 module for interacting with blockchain-->
+<script
+        language="javascript"
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.js"
+></script>
 
-  <!--Truffle Contract module for interacting with smart contract in javascript-->
-  <script src="https://rajranjan0608.github.io/ethereum-electionVoting/src/contract.js"></script>
+<!--Truffle Contract module for interacting with smart contract in javascript-->
+<script src="https://rajranjan0608.github.io/ethereum-electionVoting/src/contract.js"></script>
 
-  <!--Our custom javascript code for interaction-->
-  <script type="module" language="javascript" src="/loadBlockchain.js"></script>
-  <script type="module" language="javascript" src="/loadElections.js"></script>
-  <script type="text/javascript" language="javascript" src="/index.js"></script>
+<!--Our custom javascript code for interaction-->
+<script type="module" language="javascript" src="/loadBlockchain.js"></script>
+<script type="module" language="javascript" src="/loadElections.js"></script>
+<script type="text/javascript" language="javascript" src="/index.js"></script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        const addCandidateBtn = document.getElementById('addCandidate');
+        const candidatesContainer = document.getElementById('additionalCandidates');
+        let candidateCount = 2;
+
+        addCandidateBtn.addEventListener('click', function () {
+            if (candidateCount < 10) {
+                candidateCount++;
+                const candidateDiv = document.createElement('div');
+                candidateDiv.className = 'row'; // Folosim clasa 'row' pentru aliniere
+
+                candidateDiv.innerHTML = `
+                <span class="col-md-6">
+                    <font size="2"><b>Candidate ${candidateCount} name:</b></font><br />
+                    <input name="candidates[]" placeholder="Candidate name" required />
+                </span>
+            `;
+
+                if (candidateCount % 2 !== 0) {
+                    candidatesContainer.appendChild(candidateDiv);
+                } else {
+                    const lastRow = candidatesContainer.lastElementChild;
+                    lastRow.innerHTML += `
+                    <span class="col-md-custom">
+                        <font size="2"><b>Candidate ${candidateCount} name:</b></font><br />
+                        <input name="candidates[]" placeholder="Candidate name" required />
+                    </span>
+                `;
+                }
+            } else {
+                alert('You can only add up to 10 candidates.');
+            }
+        });
+    });
+</script>
+
 </html>

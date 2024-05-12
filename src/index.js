@@ -14,10 +14,15 @@ function toggleNewElectionForm() {
 
 async function submitNewElection() {
   var details = document.getElementsByName('details[]');
-  var candidates = document.getElementsByName('candidates[]');
+  var candidateInputs = document.getElementsByName('candidates[]');
+  var candidates = [];
+
+  for (var i = 0; i < candidateInputs.length; i++) {
+    candidates.push(candidateInputs[i].value);
+  }
   toggleNewElectionForm();
   try {
-    await ElectionData.createElection([details[0].value, details[1].value], [candidates[0].value, candidates[1].value]);
+    await ElectionData.createElection([details[0].value, details[1].value], candidates);
     document.getElementById('formData').reset();
   } catch(e) {
     document.getElementById('formData').reset();        
