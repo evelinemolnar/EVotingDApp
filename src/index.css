@@ -1,76 +1,140 @@
 #newElectionButton {
-    margin-top: 20px;
+  display: flex;
+  margin-top: 20px;
+  margin-left: 20px;
+  cursor: pointer; /* Ensures it is clear that the div is clickable */
+}
+
+#welcomeMessage {
+  font-family: "Playfair Display", serif;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  padding: 20px;
+  color: #0d3b66;
+  background-image: url("assets/background.jpg");
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow to gently lift the text */
+}
+
+#newElectionButton img {
+  margin-right: 10px; /* Space between the image and text */
+}
+
+#newElectionButton span {
+  font-size: 14px; /* Matching the original font size request */
 }
 
 #newElectionButton > div {
-    width: 100px;
-    cursor: pointer;
+  width: 200px;
+  cursor: pointer;
+}
+
+#newElectionText {
+  margin-top: 2px;
+  text-align: center;
 }
 
 img {
-    width: 25px;
-    height: 25px;
+  width: 25px;
+  height: 25px;
 }
 
 #formData {
-    margin: 20px 20px;
+  margin: 20px 20px;
 }
 
 #formData > input:nth-child(2) {
-    width: 100%;
+  width: 100%;
 }
 
 #formData > div {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 #formData > div > span {
-    float: left;
+  float: left;
 }
 
 #formData > div > span:nth-child(2) {
-    margin-left: 30px;
+  margin-left: 30px;
 }
 
 #newElectionForm {
-    width: 40%;
-    margin: 50px auto;
-    display: none;
+  width: 40%;
+  margin: 50px auto;
+  display: none;
+  background-color: #edede9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* More prominent shadow for emphasis */
+  position: relative; /* Needed for absolute positioning of children */
 }
 
 #newElectionForm > span {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 #newElectionForm > span > img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #account {
-    margin-top: 20px
+  margin-top: 20px;
 }
 
 #loader {
-    margin-top: -8px;
+  margin-top: -8px;
 }
 
 #elections {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 #electionContainer {
-    width: 80%;
-    margin: 50px auto
+  width: 100%;
+  margin: 20px auto;
+  background-color: #edede9;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow for a floating card effect */
 }
 
 #electionContainer > span {
-    position: absolute; 
-    top: 10px; 
-    right: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 #electionContainer > span > img {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+body {
+  font-family: "Merriweather", serif;
+}
+
+.election-section {
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Consistent shadow with buttons */
+}
+
+.election-img {
+  width: 200px;
+  height: 150px;
+}
+
+.img-fluid {
+  width: 300px;
+  height: 100%;
+}
+
+.election-name {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.btn {
+  background-color: #0d3b66;
 }
